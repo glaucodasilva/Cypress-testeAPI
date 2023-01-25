@@ -1,0 +1,22 @@
+{
+  "name": "cypress-testeapi",
+  "version": "1.0.0",
+  "description": "Testes automatizados para ligação API utilizando framework Cypress.",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ess run\""
+  },
+  "keywords": [
+    "}"
+  ],
+  "author": "Glauco Silva",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.3.0"
+  }
+}
