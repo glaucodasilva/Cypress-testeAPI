@@ -1,6 +1,6 @@
 # Teste automatizado com Cypress da API ServeRest - https://serverest.dev/
 
-## Nete projeto será testado todos os cenários disponibilizados pela API
+## Neste projeto será testado todos os cenários disponibilizados pela API
 
 * Login
 * Usuários
