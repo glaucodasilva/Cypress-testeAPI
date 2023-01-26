@@ -37,22 +37,34 @@ Cypress.Commands.add('listarUsuarios', (user) => {
     }
 });
 
-Cypress.Commands.add('cadastraUsuario', (novoUser) => {
-    cy.request({
-        method: "POST",
-        url: '/usuarios',
-        headers: {
-            accept: "application/json",
-            "content-type": "application/json"
-        },
-        body: {
-            nome: novoUser.nome,
-            email: novoUser.email,
-            password: novoUser.password,
-            administrador: novoUser.administrador
-          },
-        failOnStatusCode: false
-    })
+Cypress.Commands.add('cadastraUsuario', () => {
+    let novoUser = {}
+    cy.geraStringAleatoria(5).then(retorno => {
+        novoUser.nome = retorno
+        cy.geraStringAleatoria(10).then(retorno => {
+            novoUser.email = `${retorno}@${retorno}.com`
+            cy.geraStringAleatoria(5).then(retorno => {
+                novoUser.password = retorno; 
+                novoUser.administrador = "true"
+
+                cy.request({
+                    method: "POST",
+                    url: '/usuarios',
+                    headers: {
+                        accept: "application/json",
+                        "content-type": "application/json"
+                    },
+                    body: {
+                        nome: novoUser.nome,
+                        email: novoUser.email,
+                        password: novoUser.password,
+                        administrador: novoUser.administrador
+                      },
+                    failOnStatusCode: false
+                })
+            })
+        })
+    })    
 });
 
 Cypress.Commands.add('updateUsuario', (user) => {

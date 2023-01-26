@@ -30,14 +30,17 @@ describe('teste da API https://serverest.dev/ - Carrinhos', () => {
                 novoCar.produtos[i] = prodComp;
             }
 
-            cy.usersSemCarrinho().then(usersSemCarrinho => {
-                cy.login(usersSemCarrinho).then(responseToken => {
+            cy.cadastraUsuario().then(response => {
+                expect(response.body._id).to.exist
+                cy.usersSemCarrinho().then(usersSemCarrinho => {
+                    cy.login(usersSemCarrinho).then(responseToken => {
                         cy.cadastrarCarrinho(novoCar.produtos, responseToken.body.authorization).then(response => {
                             expect(response.body._id).to.exist
                             novoCar._id = response.body._id
                             carrinhos.push(novoCar)
                             cy.writeFile('./cypress/fixtures/carrinhos.json', carrinhos)
                         })
+                    })
                 })
             })
         })

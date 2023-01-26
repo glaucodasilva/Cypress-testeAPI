@@ -21,48 +21,22 @@
     "produtos": [
       {
         "idProduto": "BeeJh5lz3k6kSIzA",
-        "quantidade": 22,
+        "quantidade": 279,
         "precoUnitario": 470
       }
     ],
-    "precoTotal": 10340,
-    "quantidadeTotal": 22,
-    "idUsuario": "02YUQhQtM2x3h3iO",
-    "_id": "ufwzzXyhtZlK9zHS"
+    "precoTotal": 131130,
+    "quantidadeTotal": 279,
+    "idUsuario": "KyUMn6N5Cj32zg9M",
+    "_id": "r11PvFDtDrzJwuVH"
   },
   {
     "produtos": [
       {
         "idProduto": "BeeJh5lz3k6kSIzA",
-        "quantidade": 355,
-        "precoUnitario": 470
+        "quantidade": 84
       }
     ],
-    "precoTotal": 166850,
-    "quantidadeTotal": 355,
-    "idUsuario": "0uxuPY0cbmQhpEz1",
-    "_id": "yhTYd6Rd6kaIgKDN"
-  },
-  {
-    "produtos": [
-      {
-        "idProduto": "BeeJh5lz3k6kSIzA",
-        "quantidade": 4,
-        "precoUnitario": 470
-      }
-    ],
-    "precoTotal": 1880,
-    "quantidadeTotal": 4,
-    "idUsuario": "CsQNEFIKVz0bvkzT",
-    "_id": "ywgUQp2eMOEy5p4B"
-  },
-  {
-    "produtos": [
-      {
-        "idProduto": "BeeJh5lz3k6kSIzA",
-        "quantidade": 1
-      }
-    ],
-    "_id": "8al8hsA7RTgSY8W5"
+    "_id": "Nkn7O5UxqvTb3Qbh"
   }
 ]

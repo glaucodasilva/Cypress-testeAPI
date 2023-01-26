@@ -68,7 +68,7 @@ describe('teste da API https://serverest.dev/ - Produtos', () => {
                         if(response.body.message == 'Registro excluído com sucesso') {
                             sair = true
                             produtos.splice(iExcluir[i], 1)
-                            cy.writeFile('./cypress/fixtures/produtos2.json', produtos)
+                            cy.writeFile('./cypress/fixtures/produtos.json', produtos)
                         } 
                     }) 
                 }

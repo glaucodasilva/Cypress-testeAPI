@@ -18,17 +18,13 @@ describe('teste da API https://serverest.dev/ - Usuários', () => {
     });
 
     it('cadastrar novo usuario', () => {
-        let novoUser = {}
-        cy.geraStringAleatoria(5).then(retorno => {novoUser.nome = retorno})
-        cy.geraStringAleatoria(10).then(retorno => {novoUser.email = `${retorno}@${retorno}.com`})
-        cy.geraStringAleatoria(5).then(retorno => {novoUser.password = retorno; novoUser.administrador = "true"})
-
-        cy.cadastraUsuario(novoUser).then(response => {
+        cy.cadastraUsuario().then(response => {
             expect(response.body._id).to.exist
-            novoUser._id = response.body._id
-            usuarios.push(novoUser)
-            cy.writeFile('./cypress/fixtures/users.json',usuarios)
-        }) 
+            cy.listarUsuarios().then(listaDeUsuarios => {
+                usuarios = listaDeUsuarios.body.usuarios
+                cy.writeFile('./cypress/fixtures/users.json', usuarios)
+            })
+        })
     });
 
     it('com usuário válido do users.json retorna o token de autorização', () => {
