@@ -10,15 +10,15 @@
   * Excluir usuário
   * Editar usuário
  * Produtos
-  * Listar produtos cadastrados
-  * Cadastrar produto
-  * Buscar produto por ID
-  * Excluir produto
-  * Editar produto
+   * Listar produtos cadastrados
+   * Cadastrar produto
+   * Buscar produto por ID
+   * Excluir produto
+   * Editar produto
  * Carrinhos
-  * Listar carrinhos cadastrados
-  * Cadastrar carrinho
-  * Buscar carrinho por ID
-  * Excluir carrinho
-  * Excluir carrinho e retornar produtos para estoque
+   * Listar carrinhos cadastrados
+   * Cadastrar carrinho
+   * Buscar carrinho por ID
+   * Excluir carrinho
+   * Excluir carrinho e retornar produtos para estoque
 
