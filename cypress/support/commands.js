@@ -37,7 +37,7 @@ Cypress.Commands.add('listarUsuarios', (user) => {
     }
 });
 
-Cypress.Commands.add('cadastraUsuario', () => {
+Cypress.Commands.add('gerarUsuario', (admin) => {
     let novoUser = {}
     cy.geraStringAleatoria(5).then(retorno => {
         novoUser.nome = retorno
@@ -45,24 +45,30 @@ Cypress.Commands.add('cadastraUsuario', () => {
             novoUser.email = `${retorno}@${retorno}.com`
             cy.geraStringAleatoria(5).then(retorno => {
                 novoUser.password = retorno; 
-                novoUser.administrador = "true"
-
-                cy.request({
-                    method: "POST",
-                    url: '/usuarios',
-                    headers: {
-                        accept: "application/json",
-                        "content-type": "application/json"
-                    },
-                    body: {
-                        nome: novoUser.nome,
-                        email: novoUser.email,
-                        password: novoUser.password,
-                        administrador: novoUser.administrador
-                      },
-                    failOnStatusCode: false
-                })
+                novoUser.administrador = admin
+                return novoUser
             })
+        })
+    })  
+});
+
+Cypress.Commands.add('cadastraUsuario', (novoUser, admin = "true") => {
+    cy.gerarUsuario(admin).then(user => {
+        if (novoUser == undefined) {novoUser = user}
+        cy.request({
+            method: "POST",
+            url: '/usuarios',
+            headers: {
+                accept: "application/json",
+                "content-type": "application/json"
+            },
+            body: {
+                nome: novoUser.nome,
+                email: novoUser.email,
+                password: novoUser.password,
+                administrador: novoUser.administrador
+              },
+            failOnStatusCode: false
         })
     })    
 });
