@@ -125,6 +125,19 @@ Cypress.Commands.add('listarProdutos', (prod) => {
     }
 });
 
+Cypress.Commands.add('geraProd', () => {
+    let novoProd = {}
+    cy.geraStringAleatoria(5).then(retorno => {
+        novoProd.nome = retorno; 
+        novoProd.preco = 255
+        cy.geraStringAleatoria(10).then(retorno => {
+            novoProd.descricao = retorno; 
+            novoProd.quantidade = 5
+            return novoProd
+        })
+    })
+});
+
 Cypress.Commands.add('cadastrarProdutos', (novoProd, token) => {
     cy.request({
         method: "POST",
@@ -262,5 +275,34 @@ Cypress.Commands.add('cancelarCompra', (token) => {
             "Authorization": token
         },
         failOnStatusCode: false
+    })
+});
+
+Cypress.Commands.add('listaProdComCar', () => {
+    cy.listarCarrinhos().then(response => {
+        let carrinhos = response.body.carrinhos
+        let listaProdComCar = []
+        for (let i = 0; i < carrinhos.length; i++) {
+            let prodNoCar = carrinhos[i].produtos
+            for (let j = 0; j < prodNoCar.length; j++) {
+                listaProdComCar.push(prodNoCar[j].idProduto)
+            }
+            if (i == carrinhos.length -1) return listaProdComCar
+        }
+    })
+});
+
+Cypress.Commands.add('listaProdSemCar', () => {
+    cy.listaProdComCar().then(listaProdComCar => {
+        cy.listarProdutos().then(response => {
+            let listaProd = response.body.produtos
+            let listaProdSemCar = []
+            for (let k = 0; k < listaProd.length; k++) {
+                if (!listaProdComCar.includes(listaProd[k]._id)) {
+                    listaProdSemCar.push(listaProd[k]._id)
+                    if (k == (listaProd.length - 1)) return listaProdSemCar
+                }
+            }
+        })
     })
 });
