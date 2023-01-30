@@ -37,7 +37,7 @@ Cypress.Commands.add('listarUsuarios', (user) => {
     }
 });
 
-Cypress.Commands.add('gerarUsuario', (admin) => {
+Cypress.Commands.add('gerarUsuario', (admin = 'true') => {
     let novoUser = {}
     cy.geraStringAleatoria(5).then(retorno => {
         novoUser.nome = retorno

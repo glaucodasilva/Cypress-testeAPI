@@ -79,7 +79,7 @@ describe('teste da API https://serverest.dev/ - Usuários', () => {
         })
     });
 
-    it.only('ao enviar dados de um usuário já cadastrado pelo método de atualização sem o seu ID devemos receber a mensagem "Este email já está sendo usado"', () => {
+    it('ao enviar dados de um usuário já cadastrado pelo método de atualização sem o seu ID devemos receber a mensagem "Este email já está sendo usado"', () => {
         cy.listarUsuarios().then(listaDeUsuarios => {
             let user = listaDeUsuarios.body.usuarios[0]
             delete user._id
